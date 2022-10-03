@@ -23,6 +23,7 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
@@ -69,7 +70,7 @@
     "testEnvironment": "node",
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/../src/$1",
-      "^@Scheduling/(.*)$": "<rootDir>/../src/scheduling/@core/$1"
+      "^@Common/(.*)$": "<rootDir>/../src/@common/$1"
     }
   }
 }

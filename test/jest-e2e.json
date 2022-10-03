@@ -8,6 +8,6 @@
   },
   "moduleNameMapper": {
     "^@/(.*)$": "<rootDir>/../src/$1",
-    "^@Scheduling/(.*)$": "<rootDir>/../src/scheduling/@core/$1"
+    "^@Common/(.*)$": "<rootDir>/../src/@common/$1"
   }
 }

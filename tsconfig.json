@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/*": ["src/*"],
-      "@Scheduling/*": ["src/scheduling/@core/*"]
+      "@Common/*": ["src/@common/*"]
     }
   }
 }
