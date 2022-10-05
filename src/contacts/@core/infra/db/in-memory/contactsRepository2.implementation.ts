@@ -5,12 +5,12 @@ type IQuery = {
   [key in IContactProps]?: any;
 };
 
-export class ContactsInMemoryRepository extends GenericInMemoryRepository<
+export class ContactsInMemoryRepository2 extends GenericInMemoryRepository<
   Contact,
   IQuery
 > {
   async findAll(query?: IQuery, options?: any): Promise<Contact[]> {
-    console.log(1);
+    console.log(2);
     return new Promise((res) => res(this._data));
   }
 }

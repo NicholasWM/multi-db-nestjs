@@ -1,3 +1,9 @@
+export interface IOptionsGeneric {
+  includes: any[];
+  offset: number;
+  skip: number;
+}
+
 export abstract class GenericRepository<ModelInstance, IQuery, IOptions> {
   abstract get model(): ModelInstance;
   abstract create(instance: ModelInstance, options?: IOptions): Promise<void>;

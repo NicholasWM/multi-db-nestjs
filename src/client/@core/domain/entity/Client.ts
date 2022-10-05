@@ -1,5 +1,7 @@
 import { Contact } from '@/contacts/@core/domain/entity';
 
+export type IClientProps = 'name' | 'contacts' | 'email';
+
 export class Client {
   contacts: Contact[];
 
