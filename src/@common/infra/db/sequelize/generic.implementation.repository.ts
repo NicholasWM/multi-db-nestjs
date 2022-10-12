@@ -6,7 +6,7 @@ interface IOptions {
   skip: number;
 }
 
-export class GenericMySQLRepository<T, IQuery>
+export class GenericSequelizeRepository<T, IQuery>
   implements GenericRepository<T, IQuery, IOptions>
 {
   get model(): T {

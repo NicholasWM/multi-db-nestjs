@@ -1,5 +1,5 @@
 import { Contact } from '../domain/entity';
-import { ContactsInMemoryRepository } from '../infra/db/in-memory/contactsRepository.implementation';
+import { ContactsInMemoryRepository } from '../infra/db/in-memory/contacts.implementation.repository';
 import { FindAllContactsUseCase } from './FindAllContacts.useCase';
 
 describe('UseCase: FindAllContacts', () => {

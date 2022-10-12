@@ -14,8 +14,11 @@ export class GenericInMemoryRepository<T, IQuery>
   constructor() {
     this._data = [] as T[];
   }
-  get model(): T {
-    throw new Error('Method not implemented.');
+
+  async findAll(query?: any, options?: any): Promise<T[]> {
+    return new Promise((resolve) => {
+      resolve(this._data);
+    });
   }
   create(instance: T, options?: any): Promise<void> {
     return new Promise((resolve) => {
@@ -23,6 +26,11 @@ export class GenericInMemoryRepository<T, IQuery>
       resolve();
     });
   }
+
+  get model(): T {
+    throw new Error('Method not implemented.');
+  }
+
   findOne(
     query: { ownerId?: any; value?: any; type?: any; status?: any },
     options?: any,
@@ -46,11 +54,5 @@ export class GenericInMemoryRepository<T, IQuery>
     options?: any,
   ) {
     throw new Error('Method not implemented.');
-  }
-
-  async findAll(query?: any, options?: any): Promise<T[]> {
-    return new Promise((resolve) => {
-      resolve(this._data);
-    });
   }
 }
