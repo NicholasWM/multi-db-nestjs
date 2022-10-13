@@ -2,9 +2,7 @@ import { Optional } from 'sequelize';
 import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
 import { IContactAttributes } from '@/contacts/@core/domain/entity';
 
-interface IContactModelAttributes extends IContactAttributes {
-  id?: string;
-}
+type IContactModelAttributes = IContactAttributes;
 
 export type ContactInput = Optional<IContactModelAttributes, 'id'>;
 
@@ -15,13 +13,15 @@ export class ContactModel
   extends Model<IContactAttributes, ContactInput>
   implements IContactAttributes
 {
-  // TODO: Usar uuid
+  constructor() {
+    super();
+  }
+
   @PrimaryKey
   @Column({
     primaryKey: true,
-    autoIncrement: true,
   })
-  id?: number;
+  id: string;
 
   @Column
   ownerId: string;

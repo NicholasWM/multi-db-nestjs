@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto';
+
 export type IContactProps = 'ownerId' | 'value' | 'type' | 'status';
 
 export type IContactAttributes = {
@@ -5,11 +7,13 @@ export type IContactAttributes = {
   value: any;
   type: any;
   status: any;
+  id?: string;
 };
 
 export class Contact implements IContactAttributes {
   status: string;
   ownerId: string;
+  id?: string;
   constructor(
     readonly value: string, // info
     readonly type: string, // description
@@ -18,5 +22,6 @@ export class Contact implements IContactAttributes {
   ) {
     if (ownerId) this.ownerId = ownerId;
     if (status) this.status = status;
+    this.id = randomUUID();
   }
 }

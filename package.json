@@ -2,7 +2,7 @@
   "name": "api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Nicholas W.Mazzei",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -19,10 +19,13 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "mg:seq": "node_modules/.bin/sequelize db:migrate",
-    "mg:seq:undo": "node_modules/.bin/sequelize db:migrate:undo",
-    "mg:seq:generate": "node_modules/.bin/sequelize migration:generate --name",
-    "mg:typeorm:generate": "typeorm-ts-node-commonjs migration:generate -- -n migrationNameHere"
+    "mg:sequelize": "node_modules/.bin/sequelize db:migrate",
+    "mg:sequelize:undo": "node_modules/.bin/sequelize db:migrate:undo",
+    "mg:sequelize:generate": "node_modules/.bin/sequelize migration:generate --name",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "mg:typeorm": "typeorm-ts-node-commonjs migration:run --dataSource './ormconfig.ts'",
+    "mg:typeorm:undo": "typeorm-ts-node-commonjs migration:revert --dataSource './ormconfig.ts'",
+    "mg:typeorm:generate": "typeorm-ts-node-commonjs migration:create ./src/@common/infra/db/typeorm/migrations/MIGRATION_NAME"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

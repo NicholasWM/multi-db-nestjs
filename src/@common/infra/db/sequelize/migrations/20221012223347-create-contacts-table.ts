@@ -1,7 +1,7 @@
-// import { QueryInterface, DataTypes } from 'sequelize';
+import { QueryInterface, DataTypes } from 'sequelize';
 
 module.exports = {
-  async up(queryInterface, DataTypes) {
+  async up(queryInterface: QueryInterface) {
     await queryInterface.createTable('contacts', {
       id: DataTypes.UUID,
       ownerId: DataTypes.UUID,
