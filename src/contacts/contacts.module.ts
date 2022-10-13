@@ -1,13 +1,9 @@
-import { DatabaseModule } from '@/database/database.module';
 import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
 import { ContactRepository } from './@core/domain/repository/contact.repository';
-import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.implementation.repository';
-import { ContactsSequelizeRepository } from './@core/infra/db/sequelize/contact.implementation.repository';
-import { ContactModel } from './@core/infra/db/sequelize/contact.model';
-import { ContactsController } from './contacts.controller';
+import { DatabaseModule } from '@/database/database.module';
 import { ContactsService } from './contacts.service';
+import { ContactsController } from './contacts.controller';
 import { contactProviders } from './providers/index.provider';
 
 @Module({
@@ -15,7 +11,6 @@ import { contactProviders } from './providers/index.provider';
   controllers: [ContactsController],
   providers: [
     ContactsService,
-    // ContactsSequelizeRepository,
     ...contactProviders,
     {
       provide: FindAllContactsUseCase,

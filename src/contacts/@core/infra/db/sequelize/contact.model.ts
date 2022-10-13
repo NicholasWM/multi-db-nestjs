@@ -1,6 +1,6 @@
-import { IContactAttributes } from '@/contacts/@core/domain/entity';
 import { Optional } from 'sequelize';
 import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { IContactAttributes } from '@/contacts/@core/domain/entity';
 
 interface IContactModelAttributes extends IContactAttributes {
   id?: string;
@@ -8,7 +8,9 @@ interface IContactModelAttributes extends IContactAttributes {
 
 export type ContactInput = Optional<IContactModelAttributes, 'id'>;
 
-@Table
+@Table({
+  tableName: 'contacts',
+})
 export class ContactModel
   extends Model<IContactAttributes, ContactInput>
   implements IContactAttributes

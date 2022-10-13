@@ -6,14 +6,14 @@ interface IOptions {
   skip: number;
 }
 
-export class GenericSequelizeRepository<T, IQuery>
+export class GenericTypeOrmRepository<T, IQuery>
   implements GenericRepository<T, IQuery, IOptions>
 {
   get model(): T {
     throw new Error('Method not implemented.');
   }
   create(instance: T, options?: IOptions): Promise<void> {
-    throw new Error('Method not implemented.');
+    throw new Error('INSERT INTO ....');
   }
   findAll(query?: IQuery, options?: IOptions): Promise<T[]> {
     throw new Error('Method not implemented.');

@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { saveLocation } from '@/@common/constants';
-import { databaseProviders } from './config/database.provider';
-import { ContactModel } from '@/contacts/@core/infra/db/sequelize/contact.model';
-import { SequelizeModule } from '@nestjs/sequelize';
+import { databaseProviders } from './database.provider';
 
 @Module({
   providers: [...databaseProviders[saveLocation]],

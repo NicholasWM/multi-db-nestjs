@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "study_projects",
+    "port": 8801,
+    "database": "backoffice_war_sequelize",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "study_projects",
+    "port": 8801,
+    "database": "backoffice_war_sequelize",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "study_projects",
+    "port": 8801,
+    "database": "backoffice_war_sequelize",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

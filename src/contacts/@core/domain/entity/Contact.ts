@@ -1,4 +1,5 @@
 export type IContactProps = 'ownerId' | 'value' | 'type' | 'status';
+
 export type IContactAttributes = {
   ownerId: any;
   value: any;
@@ -6,7 +7,6 @@ export type IContactAttributes = {
   status: any;
 };
 
-// export interface IContactAttributes impl
 export class Contact implements IContactAttributes {
   status: string;
   ownerId: string;

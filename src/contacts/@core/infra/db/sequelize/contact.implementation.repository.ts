@@ -1,7 +1,6 @@
 import { GenericInMemoryRepository } from '@/@common/infra/db/in-memory/generic.implementation.repository';
 import { GenericSequelizeRepository } from '@/@common/infra/db/sequelize/generic.implementation.repository';
 import { Contact } from '@/contacts/@core/domain/entity';
-import { InjectModel } from '@nestjs/sequelize';
 import { IQuery } from '../@common/IQuery';
 import { ContactModel } from './contact.model';
 
@@ -11,7 +10,6 @@ export class ContactsSequelizeRepository extends GenericSequelizeRepository<
 > {
   contactModel: typeof ContactModel;
   constructor() {
-    // @InjectModel(ContactModel)
     super();
     this.contactModel = ContactModel;
   }

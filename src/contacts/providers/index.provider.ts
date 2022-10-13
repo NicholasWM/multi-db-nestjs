@@ -1,11 +1,9 @@
 import { saveLocation } from '@/@common/constants';
 import { ProviderImplementation } from '@/@common/generics/generic.provider';
-import { DatabaseModule } from '@/database/database.module';
-import { ClassProvider, FactoryProvider, ValueProvider } from '@nestjs/common';
 import { ContactRepository } from '../@core/domain/repository/contact.repository';
 import { ContactsInMemoryRepository } from '../@core/infra/db/in-memory/contacts.implementation.repository';
 import { ContactsSequelizeRepository } from '../@core/infra/db/sequelize/contact.implementation.repository';
-import { ContactModel } from '../@core/infra/db/sequelize/contact.model';
+import { ContactsTypeOrmRepositoryImplementation } from '../@core/infra/db/typeorm/contact.implementation.repository';
 
 const contactRepositoryProviders: ProviderImplementation = {
   inMemory: {
@@ -15,6 +13,10 @@ const contactRepositoryProviders: ProviderImplementation = {
   sequelize: {
     provide: ContactRepository,
     useClass: ContactsSequelizeRepository,
+  },
+  typeorm: {
+    provide: ContactRepository,
+    useClass: ContactsTypeOrmRepositoryImplementation,
   },
 };
 
