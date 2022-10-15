@@ -13,7 +13,6 @@ export type IContactAttributes = {
 export class Contact implements IContactAttributes {
   status: string;
   ownerId: string;
-  id?: string;
   constructor(
     readonly value: string, // info
     readonly type: string, // description
@@ -22,6 +21,5 @@ export class Contact implements IContactAttributes {
   ) {
     if (ownerId) this.ownerId = ownerId;
     if (status) this.status = status;
-    this.id = randomUUID();
   }
 }
