@@ -1,13 +1,10 @@
-import { Entity, Column, BaseEntity, PrimaryColumn } from 'typeorm';
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm';
 import { IContactAttributes } from '@/contacts/@core/domain/entity';
 
 @Entity({ name: 'contact' })
 export class ContactModel extends BaseEntity implements IContactAttributes {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  date: string;
 
   @Column()
   ownerId: string;
