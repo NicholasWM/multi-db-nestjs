@@ -1,9 +1,8 @@
 import { Model } from 'mongoose';
-import { Contact, IContactAttributes } from '@/contacts/@core/domain/entity';
+import { Contact } from '@/contacts/@core/domain/entity';
 import { IQuery } from '../@common/IQuery';
 import { GenericMongooseRepository } from '@/@common/infra/db/mongoose/generic.implementation.repository';
-import { ContactDocument, ContactSchema } from './contact.schema';
-import { Inject } from '@nestjs/common';
+import { ContactDocument } from './contact.schema';
 
 export class ContactsMongooseRepositoryImplementation extends GenericMongooseRepository<
   Contact,
