@@ -1,37 +1,50 @@
 import { Optional } from 'sequelize';
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Column, Model, Table, DataType } from 'sequelize-typescript';
 import { IContactAttributes } from '@/contacts/@core/domain/entity';
 
 type IContactModelAttributes = IContactAttributes;
 
 export type ContactInput = Optional<IContactModelAttributes, 'id'>;
 
+export type TContactModel = Model<IContactAttributes, ContactInput>;
+
 @Table({
-  tableName: 'contacts',
+  modelName: 'contacts',
 })
 export class ContactModel
   extends Model<IContactAttributes, ContactInput>
   implements IContactAttributes
 {
-  constructor() {
-    super();
-  }
-
-  @PrimaryKey
   @Column({
+    allowNull: false,
+    defaultValue: DataType.UUIDV4,
     primaryKey: true,
+    unique: true,
+    type: DataType.UUIDV4,
   })
   id: string;
 
-  @Column
+  @Column({
+    allowNull: false,
+    type: DataType.STRING,
+  })
   ownerId: string;
 
-  @Column
+  @Column({
+    allowNull: false,
+    type: DataType.STRING,
+  })
   value: string;
 
-  @Column
+  @Column({
+    allowNull: false,
+    type: DataType.STRING,
+  })
   type: string;
 
-  @Column
+  @Column({
+    allowNull: false,
+    type: DataType.STRING,
+  })
   status: string;
 }
