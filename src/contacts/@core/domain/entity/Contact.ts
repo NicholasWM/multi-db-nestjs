@@ -1,5 +1,3 @@
-import { randomUUID } from 'crypto';
-
 export type IContactProps = 'ownerId' | 'value' | 'type' | 'status';
 
 export type IContactAttributes = {
