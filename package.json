@@ -25,7 +25,7 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "mg:typeorm": "typeorm-ts-node-commonjs migration:run --dataSource './ormconfig.ts'",
     "mg:typeorm:undo": "typeorm-ts-node-commonjs migration:revert --dataSource './ormconfig.ts'",
-    "mg:typeorm:generate": "typeorm-ts-node-commonjs migration:create ./src/@common/infra/db/typeorm/migrations/MIGRATION_NAME"
+    "mg:typeorm:generate": "echo Type this command and put the migration name in MIGRATION_NAME \n echo npx typeorm-ts-node-commonjs migration:create ./src/@common/infra/db/typeorm/migrations/MIGRATION_NAME"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
