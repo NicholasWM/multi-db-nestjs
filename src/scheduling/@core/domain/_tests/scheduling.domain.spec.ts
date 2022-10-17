@@ -23,7 +23,10 @@ describe('Scheduling Domain', () => {
       email: 'nicholas@email.com',
     };
 
-    const clientOwner = new Client(client.name, client.email);
+    const clientOwner = new Client({
+      name: client.name,
+      email: client.email,
+    });
 
     const schedulingData: Pick<
       Scheduling,
@@ -62,7 +65,10 @@ describe('Scheduling Domain', () => {
       email: 'nicholas@email.com',
     };
 
-    const clientOwner = new Client(client.name, client.email);
+    const clientOwner = new Client({
+      name: client.name,
+      email: client.email,
+    });
     scheduling.addOwner(clientOwner);
 
     expect(scheduling.date).toBe(scheduling?.date);

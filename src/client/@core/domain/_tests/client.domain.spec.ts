@@ -1,4 +1,5 @@
 import { Contact } from '@/contacts/@core/domain/entity';
+import { randomUUID } from 'crypto';
 import { Client } from '../entity';
 
 describe('Client Domain', () => {
@@ -8,7 +9,10 @@ describe('Client Domain', () => {
       name: 'Nicholas',
     };
 
-    const client = new Client(clientData.name, clientData.email);
+    const client = new Client({
+      name: clientData.name,
+      email: clientData.email,
+    });
 
     expect(client.name).toBe(clientData.name);
     expect(client.email).toBe(clientData.email);
@@ -20,13 +24,18 @@ describe('Client Domain', () => {
       name: 'Nicholas',
     };
 
-    const contactsData: Pick<Contact, 'value' | 'type'>[] = [
-      { type: 'email', value: 'nicholas@email.com' },
-      { type: 'email', value: 'nicholas2@email.com' },
-      { type: 'email', value: 'nicholas3@email.com' },
+    const client = new Client({
+      name: clientData.name,
+      email: clientData.email,
+    });
+
+    const contactsData: Pick<Contact, 'value' | 'type' | 'ownerId'>[] = [
+      { type: 'email', value: 'nicholas@email.com', ownerId: client.id },
+      { type: 'email', value: 'nicholas2@email.com', ownerId: client.id },
+      { type: 'email', value: 'nicholas3@email.com', ownerId: client.id },
     ];
 
-    const client = new Client(clientData.name, clientData.email, contactsData);
+    client.addContacts(contactsData);
 
     expect(client.name).toBe(clientData.name);
     expect(client.email).toBe(clientData.email);
@@ -44,13 +53,31 @@ describe('Client Domain', () => {
       name: 'Nicholas',
     };
 
-    const contactsData: Pick<Contact, 'value' | 'type'>[] = [
-      { type: 'email', value: 'nicholas@email.com' },
-      { type: 'email', value: 'nicholas2@email.com' },
-      { type: 'email', value: 'nicholas3@email.com' },
+    const contactsData: Contact[] = [
+      {
+        type: 'email',
+        status: 'true',
+        value: 'nicholas@email.com',
+        ownerId: randomUUID(),
+      },
+      {
+        type: 'email',
+        status: 'true',
+        value: 'nicholas2@email.com',
+        ownerId: randomUUID(),
+      },
+      {
+        type: 'email',
+        status: 'true',
+        value: 'nicholas3@email.com',
+        ownerId: randomUUID(),
+      },
     ];
 
-    const client = new Client(clientData.name, clientData.email);
+    const client = new Client({
+      name: clientData.name,
+      email: clientData.email,
+    });
 
     client.addContacts(contactsData);
 
