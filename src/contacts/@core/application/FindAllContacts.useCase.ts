@@ -1,12 +1,12 @@
 import { GenericUseCase } from '@/@common/generics/generic.useCase';
-import { ContactRepository } from '../domain/repository/contact.repository';
+import { ContactGenericRepository } from '../domain/repository/contact.repository';
 
 interface IExecuteProps {
   clientId: string;
 }
 
 export class FindAllContactsUseCase extends GenericUseCase<
-  ContactRepository,
+  ContactGenericRepository,
   IExecuteProps
 > {
   async execute() {

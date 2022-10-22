@@ -1,24 +1,31 @@
 import { Module } from '@nestjs/common';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
-import { ContactRepository } from './@core/domain/repository/contact.repository';
+import {
+  ContactGenericRepository,
+  ContactRepositorySequelize,
+} from './@core/domain/repository/contact.repository';
 import { DatabaseModule } from '@/database/database.module';
-import { ContactsService } from './contacts.service';
+import { ContactServiceDTO, ContactsService } from './contacts.service';
 import { ContactsController } from './contacts.controller';
 import { contactProviders } from './providers/index.provider';
-import { ContactRepositoryMongo } from './@core/domain/repository/contactMongo.repository';
 
 @Module({
   imports: [DatabaseModule],
   controllers: [ContactsController],
   providers: [
-    ContactsService,
     ...contactProviders,
     {
-      provide: FindAllContactsUseCase,
-      useFactory: (repository: ContactRepository) => {
-        return new FindAllContactsUseCase(repository);
+      provide: ContactsService,
+      useFactory: (defaultRepository: ContactGenericRepository) => {
+        const contactServiceDTO: ContactServiceDTO = {
+          repository: defaultRepository,
+          useCases: {
+            findAllUseCase: new FindAllContactsUseCase(defaultRepository),
+          },
+        };
+        return new ContactsService(contactServiceDTO);
       },
-      inject: [ContactRepository],
+      inject: [ContactRepositorySequelize],
     },
   ],
 })

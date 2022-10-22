@@ -1,18 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
 import { Contact } from './@core/domain/entity';
-import { ContactRepository } from './@core/domain/repository/contact.repository';
-import { ContactRepositoryMongo } from './@core/domain/repository/contactMongo.repository';
+import { ContactGenericRepository } from './@core/domain/repository/contact.repository';
+
+interface ContactsServiceUseCases {
+  findAllUseCase: FindAllContactsUseCase;
+}
+export interface ContactServiceDTO {
+  useCases: ContactsServiceUseCases;
+  readonly repository: ContactGenericRepository;
+}
 
 @Injectable()
 export class ContactsService {
-  constructor(
-    private readonly _repository: ContactRepository,
-    private findAllUseCase: FindAllContactsUseCase,
-  ) {}
+  private readonly _repository: ContactGenericRepository;
+  private _useCases: { findAllUseCase: FindAllContactsUseCase };
+
+  constructor(contactServiceDTO: ContactServiceDTO) {
+    this._repository = contactServiceDTO.repository;
+    this._useCases = contactServiceDTO.useCases;
+  }
 
   async findAll() {
-    const all = this.findAllUseCase.execute();
+    const all = this._useCases.findAllUseCase.execute();
     return all;
   }
 

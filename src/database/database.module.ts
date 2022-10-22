@@ -1,14 +1,17 @@
-import { Module } from '@nestjs/common';
-import { saveLocation } from '@/@common/constants';
-import { databaseProviders } from './database.provider';
+import { Module, Logger } from '@nestjs/common';
+import { DatabaseStackProviders } from './database.provider';
+
 @Module({
-  providers: [
-    ...databaseProviders[saveLocation],
-    ...databaseProviders['mongoose'],
-  ],
-  exports: [
-    ...databaseProviders[saveLocation],
-    ...databaseProviders['mongoose'],
-  ],
+  providers: DatabaseStackProviders,
+  exports: DatabaseStackProviders,
 })
-export class DatabaseModule {}
+export class DatabaseModule {
+  private readonly logger = new Logger(DatabaseModule.name);
+  // Pensar em algumas configurações para serem realizadas por aqui
+  // Dar log da implementação usada...
+  constructor() {
+    DatabaseStackProviders.map((d) => {
+      this.logger.debug(`Database Connection ${d.provide}`);
+    });
+  }
+}
