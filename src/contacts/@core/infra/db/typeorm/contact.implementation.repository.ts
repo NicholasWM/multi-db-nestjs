@@ -19,6 +19,7 @@ export class ContactsTypeOrmRepositoryImplementation extends GenericTypeOrmRepos
   }
 
   async create(instance: Contact): Promise<void> {
+    console.log('TypeOrm Implementation');
     await this.contactModel.insert(instance);
   }
 }

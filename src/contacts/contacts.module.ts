@@ -5,6 +5,7 @@ import { DatabaseModule } from '@/database/database.module';
 import { ContactsService } from './contacts.service';
 import { ContactsController } from './contacts.controller';
 import { contactProviders } from './providers/index.provider';
+import { ContactRepositoryMongo } from './@core/domain/repository/contactMongo.repository';
 
 @Module({
   imports: [DatabaseModule],

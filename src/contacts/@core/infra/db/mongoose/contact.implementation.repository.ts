@@ -20,6 +20,7 @@ export class ContactsMongooseRepositoryImplementation extends GenericMongooseRep
   }
 
   async create(instance: Contact): Promise<void> {
+    console.log('Mongoose Implementation');
     await this.contactModel.create(instance);
   }
 }

@@ -7,6 +7,7 @@ import { ContactsMongooseRepositoryImplementation } from '../@core/infra/db/mong
 import { ContactsSequelizeRepository } from '../@core/infra/db/sequelize/contact.implementation.repository';
 import { ContactsTypeOrmRepositoryImplementation } from '../@core/infra/db/typeorm/contact.implementation.repository';
 import { ContactSchema } from '../@core/infra/db/mongoose/contact.schema';
+import { ContactRepositoryMongo } from '../@core/domain/repository/contactMongo.repository';
 
 const contactRepositoryProviders: ProviderImplementation = {
   inMemory: {
@@ -22,7 +23,7 @@ const contactRepositoryProviders: ProviderImplementation = {
     useClass: ContactsTypeOrmRepositoryImplementation,
   },
   mongoose: {
-    provide: ContactRepository,
+    provide: ContactRepositoryMongo,
     useFactory: async (connection: Connection) => {
       const model = connection.model('Contact', ContactSchema);
       const implementation = new ContactsMongooseRepositoryImplementation(
@@ -34,4 +35,7 @@ const contactRepositoryProviders: ProviderImplementation = {
   },
 };
 
-export const contactProviders = [contactRepositoryProviders[saveLocation]];
+export const contactProviders = [
+  contactRepositoryProviders['mongoose'],
+  contactRepositoryProviders[saveLocation],
+];
