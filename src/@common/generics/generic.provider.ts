@@ -23,15 +23,30 @@ export interface IAvailableDataSourcesByORM {
   MONGOOSE: { [key: string]: TMongooseDataSources };
 }
 
-export const AVAILABLE_DATA_SOURCES = {
+export interface IAvailableDataSources {
+  IN_MEMORY: any;
+  SEQUELIZE: {
+    DEFAULT: 'SEQ_DB_1';
+    DB_2: 'SEQ_DB_2';
+  };
+  TYPEORM: {
+    DEFAULT: 'TYPEORM_DB_1';
+    DB_2: 'TYPEORM_DB_2';
+  };
+  MONGOOSE: {
+    DEFAULT: 'MON_DB_1';
+    DB_2: 'MON_DB_2';
+  };
+}
+export const AVAILABLE_DATA_SOURCES: IAvailableDataSources = {
   IN_MEMORY: {},
   SEQUELIZE: {
     DEFAULT: 'SEQ_DB_1',
     DB_2: 'SEQ_DB_2',
   },
   TYPEORM: {
-    DEFAULT: 'TYPE_DB_1',
-    DB_2: 'TYPE_DB_2',
+    DEFAULT: 'TYPEORM_DB_1',
+    DB_2: 'TYPEORM_DB_2',
   },
   MONGOOSE: {
     DEFAULT: 'MON_DB_1',
