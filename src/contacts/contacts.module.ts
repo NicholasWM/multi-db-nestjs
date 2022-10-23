@@ -3,6 +3,9 @@ import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useC
 import {
   ContactGenericRepository,
   ContactRepositorySequelize,
+  ContactRepositoryTypeORM,
+  ContactRepositoryTypeORM_DB_2,
+  ContactRepositoryTypeORM_DEFAULT,
 } from './@core/domain/repository/contact.repository';
 import { DatabaseModule } from '@/database/database.module';
 import { ContactServiceDTO, ContactsService } from './contacts.service';
@@ -25,7 +28,7 @@ import { contactProviders } from './providers/index.provider';
         };
         return new ContactsService(contactServiceDTO);
       },
-      inject: [ContactRepositorySequelize],
+      inject: [ContactRepositoryTypeORM_DEFAULT],
     },
   ],
 })

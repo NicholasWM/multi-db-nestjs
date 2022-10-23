@@ -1,5 +1,6 @@
 import { GenericTypeOrmRepository } from '@/@common/infra/db/typeorm/generic.implementation.repository';
 import { Contact } from '@/contacts/@core/domain/entity';
+import { Repository } from 'typeorm';
 import { IQuery } from '../@common/IQuery';
 import { ContactModel } from './contact.model';
 
@@ -7,19 +8,18 @@ export class ContactsTypeOrmRepositoryImplementation extends GenericTypeOrmRepos
   Contact,
   IQuery
 > {
-  contactModel: typeof ContactModel;
-  constructor() {
+  constructor(readonly _repository: Repository<ContactModel>) {
     super();
-    this.contactModel = ContactModel;
+    // this.contactModel = model;
   }
   async findAll(query?: IQuery, options?: any): Promise<Contact[]> {
     console.log('TypeOrm Implementation');
-    const contacts = await this.contactModel.find();
+    const contacts = await this._repository.find();
     return contacts;
   }
 
   async create(instance: Contact): Promise<void> {
     console.log('TypeOrm Implementation');
-    await this.contactModel.insert(instance);
+    await this._repository.insert(instance);
   }
 }

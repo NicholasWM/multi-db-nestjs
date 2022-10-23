@@ -17,10 +17,10 @@ export class ContactModel
 {
   @Column({
     allowNull: false,
-    defaultValue: DataType.UUIDV4,
+    defaultValue: DataType.UUID,
     primaryKey: true,
     unique: true,
-    type: DataType.UUIDV4,
+    type: DataType.UUID,
   })
   id: string;
 
