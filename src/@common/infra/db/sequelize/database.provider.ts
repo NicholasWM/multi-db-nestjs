@@ -1,10 +1,10 @@
 import { Sequelize } from 'sequelize-typescript';
 import { ContactModel } from '@/contacts/@core/infra/db/sequelize/contact.model';
-import { ORM_AVAILABLE_DATA_SOURCES } from '@/@common/generics/generic.provider';
+import { ORM_AVAILABLE_DATA_SOURCES_ORM } from '@/@common/generics/generic.provider';
 
 export const sequelizeDatabaseProviders = [
   {
-    provide: ORM_AVAILABLE_DATA_SOURCES.SEQUELIZE,
+    provide: ORM_AVAILABLE_DATA_SOURCES_ORM.SEQUELIZE,
     useFactory: async () => {
       const sequelize = new Sequelize({
         dialect: 'mysql',
