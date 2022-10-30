@@ -12,6 +12,9 @@ export class ContactsTypeOrmRepositoryImplementation extends GenericTypeOrmRepos
     super();
     // this.contactModel = model;
   }
+  get model(): Repository<ContactModel> {
+    return this._repository;
+  }
   async findAll(query?: IQuery, options?: any): Promise<Contact[]> {
     console.log('TypeOrm Implementation');
     const contacts = await this._repository.find();
