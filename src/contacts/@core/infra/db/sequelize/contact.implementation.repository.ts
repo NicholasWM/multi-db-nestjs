@@ -1,7 +1,8 @@
 import { GenericSequelizeRepository } from '@/@common/infra/db/sequelize/generic.implementation.repository';
 import { IQuery } from '../@common/IQuery';
-import { ContactModel, ContactInput } from './contact.model';
+import { ContactInput } from './contact.model';
 import { Contact, IContactAttributes } from '@/contacts/@core/domain/entity';
+import { Model } from 'sequelize';
 
 export class ContactsSequelizeRepository extends GenericSequelizeRepository<
   Contact,
@@ -9,8 +10,8 @@ export class ContactsSequelizeRepository extends GenericSequelizeRepository<
   IContactAttributes,
   ContactInput
 > {
-  contactModel: typeof ContactModel;
-  constructor() {
-    super(ContactModel);
+  contactModel: typeof Model;
+  constructor(contactModel: typeof Model) {
+    super(contactModel);
   }
 }

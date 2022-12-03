@@ -1,4 +1,5 @@
 import { GenericRepository } from '@/@common/generics/generic.repository';
+import { Repository } from 'typeorm';
 
 interface IOptions {
   includes: any[];
@@ -9,7 +10,7 @@ interface IOptions {
 export class GenericTypeOrmRepository<T, IQuery>
   implements GenericRepository<T, IQuery, IOptions>
 {
-  get model(): T {
+  get model(): Repository<T> {
     throw new Error('Method not implemented.');
   }
   create(instance: T, options?: IOptions): Promise<void> {

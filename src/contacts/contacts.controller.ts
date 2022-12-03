@@ -4,6 +4,13 @@ import { ContactsService } from './contacts.service';
 
 @Controller('contacts')
 export class ContactsController {
+  defaultContact: Contact = {
+    type: 'phone',
+    value: '1231232',
+    ownerId: '1',
+    status: 'active',
+  };
+
   constructor(private contactsService: ContactsService) {}
 
   @Get()
@@ -14,14 +21,39 @@ export class ContactsController {
 
   @Get('add')
   async add() {
-    const contact: Contact = {
-      type: 'phone',
-      value: '1231232',
-      ownerId: '1',
-      status: 'active',
-    };
+    const payload = await this.contactsService.createWithService(
+      this.defaultContact,
+    );
+    return payload;
+  }
 
-    const payload = await this.contactsService.create(contact);
+  @Get('add1')
+  async add1() {
+    const payload = await this.contactsService.createWithUseCase(
+      this.defaultContact,
+    );
+    return payload;
+  }
+
+  @Get('add2')
+  async add2() {
+    const payload = await this.contactsService.createWithUseCase_2(
+      this.defaultContact,
+    );
+    return payload;
+  }
+  @Get('add3')
+  async add3() {
+    const payload = await this.contactsService.createWithUseCase_3(
+      this.defaultContact,
+    );
+    return payload;
+  }
+  @Get('add4')
+  async add4() {
+    const payload = await this.contactsService.createWithUseCase_4(
+      this.defaultContact,
+    );
     return payload;
   }
 }

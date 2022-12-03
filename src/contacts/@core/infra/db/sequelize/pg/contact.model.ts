@@ -11,7 +11,7 @@ export type TContactModel = Model<IContactAttributes, ContactInput>;
 @Table({
   modelName: 'contacts',
 })
-export class ContactModel
+export class ContactModelPG
   extends Model<IContactAttributes, ContactInput>
   implements IContactAttributes
 {

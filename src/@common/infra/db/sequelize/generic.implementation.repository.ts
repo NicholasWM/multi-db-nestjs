@@ -1,6 +1,6 @@
+import { FindOptions } from 'sequelize';
 import { ModelCtor, Model } from 'sequelize-typescript';
 import { GenericRepository } from '@/@common/generics/generic.repository';
-import { FindOptions } from 'sequelize';
 
 interface IOptions extends FindOptions {
   includes: any[];
@@ -12,12 +12,16 @@ interface IOptions extends FindOptions {
   where: any;
 }
 
+// Type `ModelType` would basically wrap & satisfy the 'this' context of any sequelize helper methods
+type Constructor<T> = new (...args: any[]) => T;
+type ModelType<T extends Model<T>> = Constructor<T> & typeof Model;
+
 export class GenericSequelizeRepository<T, IQuery, TAttributes, TOptions>
   implements GenericRepository<T, IQuery, IOptions>
 {
-  _model: ModelCtor<Model<TAttributes, TOptions>>;
-  constructor(model: ModelCtor<Model<TAttributes, TOptions>>) {
-    this._model = model;
+  // _model: ModelType<T extends Model<T>>
+  constructor(readonly _model: any) {
+    // this._model = model;
   }
   get model(): ModelCtor<Model<TAttributes, TOptions>> {
     return this._model;

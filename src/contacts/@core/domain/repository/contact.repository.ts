@@ -15,13 +15,16 @@ export abstract class ContactGenericRepository extends GenericRepository<
   IOptionsGeneric
 > {}
 
+export abstract class ContactRepositorySequelize extends ContactGenericRepository {}
+export abstract class ContactRepositorySequelize_DEFAULT extends ContactGenericRepository {}
+export abstract class ContactRepositorySequelize_DB_2 extends ContactGenericRepository {}
+
 export abstract class ContactRepositoryTypeORM extends ContactGenericRepository {}
 export abstract class ContactRepositoryTypeORM_DEFAULT extends ContactGenericRepository {}
 export abstract class ContactRepositoryTypeORM_DB_2 extends ContactGenericRepository {}
 
 export abstract class ContactRepositoryMongoose extends ContactGenericRepository {}
 export abstract class ContactRepositoryInMemory extends ContactGenericRepository {}
-export abstract class ContactRepositorySequelize extends ContactGenericRepository {}
 
 export abstract class ContactRepository extends ContactGenericRepository {}
 
