@@ -22,7 +22,7 @@ export interface ContactServiceDTO {
 @Injectable()
 export class ContactsService {
   constructor(
-    private readonly _repository: any,
+    private readonly _repository: ContactGenericRepository,
     private readonly _useCases: {
       findAllUseCase: FindAllContactsUseCase;
       createContactsUseCase: CreateContactsUseCase;
@@ -38,20 +38,17 @@ export class ContactsService {
   }
 
   async createWithService(contact: Contact) {
-    console.log(contact);
     const newContact = this._repository.create(contact);
     return newContact;
   }
 
   async createWithUseCase(contact: Contact) {
-    console.log(contact);
     const newContact = this._useCases.createContactsUseCase.execute({
       contact,
     });
     return newContact;
   }
   async createWithUseCase_2(contact: Contact) {
-    console.log(this._useCases);
     const newContact = this._useCases.createContactsUseCase_2.execute({
       contact,
     });

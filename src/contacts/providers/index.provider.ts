@@ -21,6 +21,7 @@ const contactRepositoryProviders = {
 export const contactProviders = [
   contactRepositoryProviders.TYPEORM_DB_1,
   contactRepositoryProviders.TYPEORM_DB_2,
-  // contactRepositoryProviders.SEQ_DB_1,
-  // contactRepositoryProviders.SEQ_DB_2,
+  contactRepositoryProviders.MONGOOSE_DATA_SOURCE,
+  contactRepositoryProviders.SEQ_DB_1,
+  contactRepositoryProviders.SEQ_DB_2,
 ];
