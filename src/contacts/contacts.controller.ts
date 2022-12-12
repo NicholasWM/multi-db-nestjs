@@ -13,11 +13,11 @@ export class ContactsController {
 
   constructor(private contactsService: ContactsService) {}
 
-  @Get()
-  async findAll() {
-    const payload = await this.contactsService.findAll();
-    return payload;
-  }
+  // @Get()
+  // async findAll() {
+  //   const payload = await this.contactsService.findAll();
+  //   return payload;
+  // }
 
   @Get('add')
   async add() {
@@ -27,33 +27,11 @@ export class ContactsController {
     return payload;
   }
 
-  @Get('add1')
-  async add1() {
-    const payload = await this.contactsService.createWithUseCase(
-      this.defaultContact,
-    );
-    return payload;
-  }
-
-  @Get('add2')
-  async add2() {
-    const payload = await this.contactsService.createWithUseCase_2(
-      this.defaultContact,
-    );
-    return payload;
-  }
-  @Get('add3')
-  async add3() {
-    const payload = await this.contactsService.createWithUseCase_3(
-      this.defaultContact,
-    );
-    return payload;
-  }
-  @Get('add4')
-  async add4() {
-    const payload = await this.contactsService.createWithUseCase_4(
-      this.defaultContact,
-    );
-    return payload;
-  }
+  // @Get('add1')
+  // async add1() {
+  //   const payload = await this.contactsService.createWithUseCase(
+  //     this.defaultContact,
+  //   );
+  //   return payload;
+  // }
 }
