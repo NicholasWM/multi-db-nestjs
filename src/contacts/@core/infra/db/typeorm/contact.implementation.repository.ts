@@ -1,3 +1,4 @@
+import { v4 as uuid } from 'uuid';
 import { GenericTypeOrmRepository } from '@/@common/infra/db/typeorm/generic.implementation.repository';
 import { Contact } from '@/contacts/@core/domain/entity';
 import { Repository } from 'typeorm';
@@ -21,8 +22,12 @@ export class ContactsTypeOrmRepositoryImplementation extends GenericTypeOrmRepos
     return contacts;
   }
 
-  async create(instance: Contact): Promise<void> {
+  async create(instance: Contact): Promise<any> {
     console.log('TypeOrm Implementation');
-    await this._repository.insert(instance);
+    const result = await this._repository.save({
+      id: uuid(),
+      ...instance,
+    });
+    return result;
   }
 }

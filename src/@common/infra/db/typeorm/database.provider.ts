@@ -1,5 +1,5 @@
 import { AVAILABLE_DATA_SOURCES } from '@/@common/generics/generic.provider';
-import { connectionSource, connectionSourcePg } from 'ormconfig';
+import { connectionSource, connectionSourcePg } from '../../../../../ormconfig';
 
 export const typeOrmDatabaseProviders = [
   {

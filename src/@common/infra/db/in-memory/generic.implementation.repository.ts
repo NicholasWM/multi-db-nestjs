@@ -1,4 +1,6 @@
+import { v4 as uuid } from 'uuid';
 import { GenericRepository } from '@/@common/generics/generic.repository';
+import { IContactAttributes } from '@/contacts/@core/domain/entity';
 
 interface IOptions {
   includes: any[];
@@ -20,10 +22,11 @@ export class GenericInMemoryRepository<T, IQuery>
       resolve(this._data);
     });
   }
-  create(instance: T, options?: any): Promise<void> {
+  async create(instance: T, options?: any): Promise<any> {
     return new Promise((resolve) => {
-      this._data.push({ ...instance });
-      resolve();
+      const newData = { ...instance, id: uuid() };
+      this._data.push(newData);
+      resolve(newData);
     });
   }
 

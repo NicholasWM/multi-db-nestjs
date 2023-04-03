@@ -1,3 +1,5 @@
+import { IContactAttributes } from '@/contacts/@core/domain/entity';
+
 export interface IOptionsGeneric {
   includes: any[];
   offset: number;
@@ -6,7 +8,10 @@ export interface IOptionsGeneric {
 
 export abstract class GenericRepository<ModelInstance, IQuery, IOptions> {
   abstract get model(): any;
-  abstract create(instance: ModelInstance, options?: IOptions): Promise<void>;
+  abstract create(
+    instance: ModelInstance,
+    options?: IOptions,
+  ): Promise<IContactAttributes>;
   abstract findAll(
     query?: IQuery,
     options?: IOptions,

@@ -1,9 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateContactsUseCase } from './@core/application/CreateContact.useCase';
-import { Contact } from './@core/domain/entity';
+import { Contact, IContactAttributes } from './@core/domain/entity';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
 import {
   ContactGenericRepository,
+  ContactRepositorySequelize_DB_2,
   ContactRepositorySequelize_DEFAULT,
 } from './@core/domain/repository/contact.repository';
 
@@ -19,7 +20,9 @@ export interface ContactServiceDTO {
 @Injectable()
 export class ContactsService {
   constructor(
+    // private readonly _repository: FindAllContactsUseCase,
     private readonly _repository: ContactGenericRepository,
+
     private readonly _useCases: {
       findAllUseCase: FindAllContactsUseCase;
       createContactsUseCase: CreateContactsUseCase;
@@ -31,9 +34,9 @@ export class ContactsService {
     return all;
   }
 
-  async createWithService(contact: Contact) {
-    const newContact = this._repository.create(contact);
-    console.log(this);
+  async createWithService(contact: Contact): Promise<IContactAttributes> {
+    const newContact = await this._repository.create(contact);
+    console.log(newContact);
     return newContact;
   }
 

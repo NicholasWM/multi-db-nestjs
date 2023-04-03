@@ -1,22 +1,18 @@
 import { Module } from '@nestjs/common';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
-import {
-  ContactRepository,
-  ContactRepositorySequelize_DB_2,
-  ContactRepositorySequelize_DEFAULT,
-} from './@core/domain/repository/contact.repository';
+import { ContactRepository } from './@core/domain/repository/contact.repository';
 import { DatabaseModule } from '@/database/database.module';
 import { ContactsService } from './contacts.service';
 import { ContactsController } from './contacts.controller';
 import { contactProviders } from './providers/index.provider';
 import { CreateContactsUseCase } from './@core/application/CreateContact.useCase';
+import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.implementation.repository';
 
 @Module({
   imports: [DatabaseModule],
   controllers: [ContactsController],
   providers: [
     ...contactProviders,
-    ContactsService,
     {
       provide: ContactsService,
       useFactory: (
@@ -30,12 +26,11 @@ import { CreateContactsUseCase } from './@core/application/CreateContact.useCase
         });
       },
       inject: [
-        ContactRepositorySequelize_DEFAULT,
+        ContactsInMemoryRepository,
         FindAllContactsUseCase,
         CreateContactsUseCase,
       ],
     },
-
     {
       provide: CreateContactsUseCase,
       useFactory: (defaultRepository: any) => {
@@ -44,7 +39,7 @@ import { CreateContactsUseCase } from './@core/application/CreateContact.useCase
         );
         return createContactsUseCase;
       },
-      inject: [ContactRepositorySequelize_DB_2],
+      inject: [ContactsInMemoryRepository],
     },
     {
       provide: FindAllContactsUseCase,
@@ -52,7 +47,7 @@ import { CreateContactsUseCase } from './@core/application/CreateContact.useCase
         const findAllUseCase = new FindAllContactsUseCase(defaultRepository);
         return findAllUseCase;
       },
-      inject: [ContactRepositorySequelize_DEFAULT],
+      inject: [ContactsInMemoryRepository],
     },
   ],
 })

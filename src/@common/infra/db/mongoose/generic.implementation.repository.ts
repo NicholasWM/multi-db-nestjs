@@ -12,7 +12,7 @@ export class GenericMongooseRepository<T, IQuery>
   get model(): T {
     throw new Error('Method not implemented.');
   }
-  create(instance: T, options?: IOptions): Promise<void> {
+  create(instance: T, options?: IOptions): Promise<any> {
     throw new Error('INSERT INTO ....');
   }
   findAll(query?: IQuery, options?: IOptions): Promise<T[]> {

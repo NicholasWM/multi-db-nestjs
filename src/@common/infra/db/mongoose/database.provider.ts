@@ -1,5 +1,5 @@
-import { ORM_AVAILABLE_DATA_SOURCES_ORM } from '@/@common/generics/generic.provider';
 import * as mongoose from 'mongoose';
+import { ORM_AVAILABLE_DATA_SOURCES_ORM } from '@/@common/generics/generic.provider';
 
 export const mongooseDatabaseProviders = [
   {

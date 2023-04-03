@@ -1,4 +1,5 @@
 import { AVAILABLE_DATA_SOURCES } from '@/@common/generics/generic.provider';
+import { IContactAttributes } from '@/contacts/@core/domain/entity';
 import { ContactModelMySQL } from '@/contacts/@core/infra/db/sequelize/mysql/contact.model';
 import { ContactModelPG } from '@/contacts/@core/infra/db/sequelize/pg/contact.model';
 import { Module, Logger } from '@nestjs/common';

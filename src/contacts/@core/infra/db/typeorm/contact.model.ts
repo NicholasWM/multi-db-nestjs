@@ -3,7 +3,7 @@ import { IContactAttributes } from '@/contacts/@core/domain/entity';
 
 @Entity({ name: 'contact' })
 export class ContactModel extends BaseEntity implements IContactAttributes {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', {})
   id: string;
 
   @Column()
