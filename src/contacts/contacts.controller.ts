@@ -17,7 +17,7 @@ export class ContactsController {
   constructor(private contactsService: ContactsService) {}
 
   @Get()
-  async findAll() {
+  async findAll(): Promise<Contact[]> {
     const payload = await this.contactsService.findAll();
     return payload;
   }
