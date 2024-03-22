@@ -1,7 +1,10 @@
-import { Controller, Get, Inject } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
 import { Contact, IContactAttributes } from './@core/domain/entity';
 import { ContactsService } from './contacts.service';
+import { ApiTags } from '@nestjs/swagger';
+import { CreateContactDTO } from './DTOs/create.dto';
 
+@ApiTags('# Contacts')
 @Controller('contacts')
 export class ContactsController {
   defaultContact: Contact = {
@@ -19,8 +22,8 @@ export class ContactsController {
     return payload;
   }
 
-  @Get('add')
-  async add(contact: Contact): Promise<IContactAttributes> {
+  @Post()
+  async add(@Body() contact: CreateContactDTO): Promise<IContactAttributes> {
     const payload = await this.contactsService.createWithService(contact);
     return payload;
   }
