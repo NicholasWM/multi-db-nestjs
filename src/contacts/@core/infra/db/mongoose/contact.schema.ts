@@ -1,5 +1,5 @@
 import mongoose, { Model } from 'mongoose';
-import { Contact, IContactAttributes } from '@/contacts/@core/domain/entity';
+import { Contact, ContactDTO } from '@/contacts/@core/domain/entity';
 
 export class ContactDocument extends Model<Contact> {
   readonly ownerId: string;
@@ -8,7 +8,7 @@ export class ContactDocument extends Model<Contact> {
   readonly status: string;
 }
 
-export const ContactSchema = new mongoose.Schema<IContactAttributes>({
+export const ContactSchema = new mongoose.Schema<ContactDTO>({
   id: String,
   value: String,
   type: String,

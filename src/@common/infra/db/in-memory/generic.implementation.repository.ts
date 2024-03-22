@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { GenericRepository } from '@/@common/generics/generic.repository';
-import { IContactAttributes } from '@/contacts/@core/domain/entity';
+import { ContactDTO } from '@/contacts/@core/domain/entity';
 
 interface IOptions {
   includes: any[];

@@ -1,4 +1,4 @@
-import { IContactAttributes } from '@/contacts/@core/domain/entity';
+import { ContactDTO } from '@/contacts/@core/domain/entity';
 
 export interface IOptionsGeneric {
   includes: any[];
@@ -11,7 +11,7 @@ export abstract class GenericRepository<ModelInstance, IQuery, IOptions> {
   abstract create(
     instance: ModelInstance,
     options?: IOptions,
-  ): Promise<IContactAttributes>;
+  ): Promise<ContactDTO>;
   abstract findAll(
     query?: IQuery,
     options?: IOptions,

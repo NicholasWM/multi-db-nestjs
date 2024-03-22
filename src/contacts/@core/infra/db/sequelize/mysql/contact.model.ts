@@ -1,19 +1,19 @@
 import { Optional } from 'sequelize';
 import { Column, Model, Table, DataType } from 'sequelize-typescript';
-import { IContactAttributes } from '@/contacts/@core/domain/entity';
+import { ContactDTO } from '@/contacts/@core/domain/entity';
 
-type IContactModelAttributes = IContactAttributes;
+type IContactModelAttributes = ContactDTO;
 
 export type ContactInput = Optional<IContactModelAttributes, 'id'>;
 
-export type TContactModel = Model<IContactAttributes, ContactInput>;
+export type TContactModel = Model<ContactDTO, ContactInput>;
 
 @Table({
   modelName: 'contacts',
 })
 export class ContactModelMySQL
-  extends Model<IContactAttributes, ContactInput>
-  implements IContactAttributes
+  extends Model<ContactDTO, ContactInput>
+  implements ContactDTO
 {
   @Column({
     allowNull: false,

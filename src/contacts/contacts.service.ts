@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateContactsUseCase } from './@core/application/CreateContact.useCase';
-import { Contact, IContactAttributes } from './@core/domain/entity';
+import { Contact, ContactDTO } from './@core/domain/entity';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
 import {
   ContactGenericRepository,
@@ -34,7 +34,7 @@ export class ContactsService {
     return all;
   }
 
-  async createWithService(contact: Contact): Promise<IContactAttributes> {
+  async createWithService(contact: Contact): Promise<ContactDTO> {
     const newContact = await this._repository.create(contact);
     console.log(newContact);
     return newContact;

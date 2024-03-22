@@ -1,8 +1,8 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm';
-import { IContactAttributes } from '@/contacts/@core/domain/entity';
+import { ContactDTO } from '@/contacts/@core/domain/entity';
 
 @Entity({ name: 'contact' })
-export class ContactModel extends BaseEntity implements IContactAttributes {
+export class ContactModel extends BaseEntity implements ContactDTO {
   @PrimaryGeneratedColumn('uuid', {})
   id: string;
 

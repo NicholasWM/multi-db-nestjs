@@ -13,10 +13,11 @@ export class ContactsMongooseRepositoryImplementation extends GenericMongooseRep
     super();
     this.contactModel = contactModel;
   }
-  async findAll(query?: IQuery, options?: any): Promise<Contact[]> {
-    console.log('Mongoose Implementation');
+  // async findAll(query?: IQuery, options?: any): Promise<Contact[]> {
+  async findAll(query?: IQuery, options?: any): Promise<any[]> {
     const contacts = await this.contactModel.find();
-    return contacts;
+    const formattedContacts = contacts.map((contact) => contact.toJSON());
+    return formattedContacts;
   }
 
   async create(instance: Contact): Promise<void> {
