@@ -1,5 +1,6 @@
 import mongoose, { Model } from 'mongoose';
-import { Contact, ContactDTO } from '@/contacts/@core/domain/entity';
+import { Contact } from '@/contacts/@core/domain/entity';
+import { ContactDTO } from '@/contacts/@core/domain/entity/Contact.dto';
 
 export class ContactDocument extends Model<Contact> {
   readonly ownerId: string;

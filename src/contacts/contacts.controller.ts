@@ -1,10 +1,11 @@
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 
-import { Contact, ContactDTO } from './@core/domain/entity';
+import { Contact } from './@core/domain/entity';
 
 import { CreateContactDTO } from './DTOs';
 import { ContactsService } from './contacts.service';
+import { ContactDTO } from './@core/domain/entity/Contact.dto';
 
 @ApiTags('# Contacts')
 @Controller('contacts')

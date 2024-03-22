@@ -1,5 +1,5 @@
+import { ContactDTO } from '@/contacts/@core/domain/entity/Contact.dto';
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm';
-import { ContactDTO } from '@/contacts/@core/domain/entity';
 
 @Entity({ name: 'contact' })
 export class ContactModel extends BaseEntity implements ContactDTO {

@@ -1,12 +1,13 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateContactsUseCase } from './@core/application/CreateContact.useCase';
-import { Contact, ContactDTO } from './@core/domain/entity';
+import { Contact } from './@core/domain/entity';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
 import {
   ContactGenericRepository,
   ContactRepositorySequelize_DB_2,
   ContactRepositorySequelize_DEFAULT,
 } from './@core/domain/repository/contact.repository';
+import { ContactDTO } from './@core/domain/entity/Contact.dto';
 
 interface ContactsServiceUseCases {
   findAllUseCase: FindAllContactsUseCase;

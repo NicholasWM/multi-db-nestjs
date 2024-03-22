@@ -1,8 +1,9 @@
 import { Model } from 'mongoose';
-import { Contact, ContactDTO } from '@/contacts/@core/domain/entity';
+import { Contact } from '@/contacts/@core/domain/entity';
 import { IQuery } from '../@common/IQuery';
 import { GenericMongooseRepository } from '@/@common/infra/db/mongoose/generic.implementation.repository';
 import { ContactDocument } from './contact.schema';
+import { ContactDTO } from '@/contacts/@core/domain/entity/Contact.dto';
 
 export class ContactsMongooseRepositoryImplementation extends GenericMongooseRepository<
   Contact,

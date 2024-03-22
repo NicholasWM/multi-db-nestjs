@@ -1,4 +1,4 @@
-import { ContactDTO } from '@/contacts/@core/domain/entity';
+import { ContactDTO } from '@/contacts/@core/domain/entity/Contact.dto';
 
 export interface IOptionsGeneric {
   includes: any[];

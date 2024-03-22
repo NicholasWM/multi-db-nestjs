@@ -1,6 +1,6 @@
+import { ContactDTO } from '@/contacts/@core/domain/entity/Contact.dto';
 import { Optional } from 'sequelize';
 import { Column, Model, Table, DataType } from 'sequelize-typescript';
-import { ContactDTO } from '@/contacts/@core/domain/entity';
 
 type IContactModelAttributes = ContactDTO;
 
