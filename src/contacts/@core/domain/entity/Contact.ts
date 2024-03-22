@@ -30,16 +30,15 @@ export class ContactDTO {
 }
 
 export class Contact implements ContactDTO {
+  type: string;
+  value: string;
   status: string;
-
   ownerId: string;
-  constructor(
-    readonly value: string, // info
-    readonly type: string, // description
-    status?: string,
-    ownerId?: string,
-  ) {
-    if (ownerId) this.ownerId = ownerId;
-    if (status) this.status = status;
+
+  constructor(contactDTO: ContactDTO) {
+    this.value = contactDTO.value;
+    this.type = contactDTO.type;
+    this.status = contactDTO.status;
+    this.ownerId = contactDTO.ownerId;
   }
 }

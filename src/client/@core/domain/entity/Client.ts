@@ -32,7 +32,13 @@ export class Client implements CreateClientDomainDTO {
   addContacts(contacts: Pick<Contact, 'value' | 'type'>[]) {
     const newContacts = contacts.map((contact) => {
       const { type, value } = contact;
-      return new Contact(value, type, 'active', this.id);
+      return new Contact({
+        value,
+        type,
+        status: 'active',
+        id: this.id,
+        ownerId: this.id,
+      });
     });
     this.contacts.push(...newContacts);
   }
