@@ -21,6 +21,5 @@ export class ContactDTO {
   })
   status: string;
 
-  @ApiProperty()
   id?: string;
 }
