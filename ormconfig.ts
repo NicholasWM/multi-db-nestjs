@@ -3,7 +3,7 @@ import { DataSource } from 'typeorm';
 import { TypeOrmModels } from './src/@common/infra/db/typeorm/models';
 
 export const connectionSource = new DataSource({
-  name: AVAILABLE_DATA_SOURCES.TYPEORM.DEFAULT,
+  name: AVAILABLE_DATA_SOURCES.TYPEORM.MY_SQL,
   type: 'mysql',
   host: 'localhost',
   port: 8801,

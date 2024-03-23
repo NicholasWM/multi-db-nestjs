@@ -42,7 +42,7 @@ export const sequelizeDatabaseProviders = [
 
       // return dataSource.initialize();
     },
-    // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.DEFAULT],
+    // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.MY_SQL],
   },
   {
     provide: AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2,
