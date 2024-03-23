@@ -21,8 +21,6 @@ export class ContactDTO {
   })
   status: string;
 
-  @ApiProperty({
-    default: 'testId',
-  })
+  @ApiProperty()
   id?: string;
 }
