@@ -3,7 +3,7 @@ import { AVAILABLE_DATA_SOURCES } from '@/@common/generics/generic.provider';
 import { ContactModelPG } from '@/contacts/@core/infra/db/sequelize/pg/contact.model';
 
 export const connectionSource = new Sequelize({
-  define: { name: { singular: AVAILABLE_DATA_SOURCES.SEQUELIZE.DEFAULT } },
+  define: { name: { singular: AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL } },
   dialect: 'mysql',
   host: 'localhost',
   port: 8801,
@@ -12,7 +12,7 @@ export const connectionSource = new Sequelize({
   database: 'backoffice_war_sequelize',
   models: [ContactModelPG],
   dialectOptions: {
-    application_name: AVAILABLE_DATA_SOURCES.SEQUELIZE.DEFAULT,
+    application_name: AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL,
   },
 });
 
@@ -33,12 +33,12 @@ export const connectionSourcePg = new Sequelize({
 export const sequelizeDatabaseProviders = [
   {
     // provide: ORM_AVAILABLE_DATA_SOURCES_ORM.TYPEORM,
-    provide: AVAILABLE_DATA_SOURCES.SEQUELIZE.DEFAULT,
+    provide: AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL,
     useFactory: async () => {
       const dataSource = connectionSource;
       // console.log('Default ', connectionSource.driver.database);
       dataSource.sync();
-      return dataSource
+      return dataSource;
 
       // return dataSource.initialize();
     },

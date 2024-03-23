@@ -10,12 +10,12 @@ import { Sequelize } from 'sequelize-typescript';
 import { buildInjectorByORM, repositoryBuilderByORM } from '@/database/helpers';
 
 interface IProvider {
-  [AVAILABLE_DATA_SOURCES.SEQUELIZE.DEFAULT]?: FactoryProvider<any>;
+  [AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL]?: FactoryProvider<any>;
   [AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2]?: FactoryProvider<any>;
 }
 
 export const sequelizeContactProviders: IProvider = {
-  [AVAILABLE_DATA_SOURCES.SEQUELIZE.DEFAULT]: {
+  [AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL]: {
     provide: ContactRepositorySequelize_DEFAULT,
     useFactory: async (connectionSource: Sequelize) => {
       return new ContactsSequelizeRepository(
@@ -23,7 +23,7 @@ export const sequelizeContactProviders: IProvider = {
       );
     },
     inject: [
-      buildInjectorByORM(AVAILABLE_DATA_SOURCES.SEQUELIZE.DEFAULT, 'SEQUELIZE'),
+      buildInjectorByORM(AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL, 'SEQUELIZE'),
     ],
   },
   [AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2]: {

@@ -8,7 +8,7 @@ import { DatabaseStackProviders } from './database.provider';
 @Module({
   imports: [
     SequelizeModule.forRoot({
-      name: AVAILABLE_DATA_SOURCES.SEQUELIZE.DEFAULT,
+      name: AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL,
       dialect: 'mysql',
       host: 'localhost',
       port: 8801,

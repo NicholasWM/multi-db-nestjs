@@ -12,7 +12,7 @@ export const ORM_AVAILABLE_DATA_SOURCES_ORM: IOrmAvailableDataSources = {
   MONGOOSE: 'MONGOOSE_DATA_SOURCE',
 };
 
-type TSequelizeDataSources = 'SEQ_DB_1' | 'SEQ_DB_2';
+type TSequelizeDataSources = 'SEQ_MY_SQL' | 'SEQ_POSTGRES';
 type TTypeORMDataSources = 'TYPE_DB_1' | 'TYPE_DB_2';
 type TMongooseDataSources = 'MON_DB_1' | 'MON_DB_2';
 
@@ -26,12 +26,12 @@ export interface IAvailableDataSourcesByORM {
 export interface IAvailableDataSources {
   IN_MEMORY: any;
   SEQUELIZE: {
-    DEFAULT: 'SEQ_DB_1';
-    DB_2: 'SEQ_DB_2';
+    MY_SQL: 'SEQ_MY_SQL';
+    DB_2: 'SEQ_POSTGRES';
   };
   TYPEORM: {
-    MY_SQL: 'TYPEORM_DB_1';
-    POSTGRES: 'TYPEORM_DB_2';
+    MY_SQL: 'TYPEORM_MY_SQL';
+    POSTGRES: 'TYPEORM_POSTGRES';
   };
   MONGOOSE: {
     DEFAULT: 'MON_DB_1';
@@ -41,12 +41,12 @@ export interface IAvailableDataSources {
 export const AVAILABLE_DATA_SOURCES: IAvailableDataSources = {
   IN_MEMORY: {},
   SEQUELIZE: {
-    DEFAULT: 'SEQ_DB_1',
-    DB_2: 'SEQ_DB_2',
+    MY_SQL: 'SEQ_MY_SQL',
+    DB_2: 'SEQ_POSTGRES',
   },
   TYPEORM: {
-    MY_SQL: 'TYPEORM_DB_1',
-    POSTGRES: 'TYPEORM_DB_2',
+    MY_SQL: 'TYPEORM_MY_SQL',
+    POSTGRES: 'TYPEORM_POSTGRES',
   },
   MONGOOSE: {
     DEFAULT: 'MON_DB_1',
