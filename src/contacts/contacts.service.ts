@@ -31,7 +31,8 @@ export class ContactsService {
   ) {}
 
   async findAll() {
-    const all = this._useCases.findAllUseCase.execute();
+    // const all = this._useCases.findAllUseCase.execute();
+    const all = await this._repository.findAll();
     return all;
   }
 
