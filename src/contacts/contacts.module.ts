@@ -40,7 +40,7 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
       tag: 'Contacts Sequelize MySQL',
       basePath: 'contacts/sequelize/mysql',
       // entityName: '',
-      providerName: 'ContactsServiceSequelizeDefault',
+      providerName: 'ContactsServiceSequelizeMySQL',
     }),
     createDynamicContactsController({
       tag: 'Contacts Sequelize PG',
@@ -112,7 +112,7 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
       ],
     },
     {
-      provide: 'ContactsServiceSequelizeDefault',
+      provide: 'ContactsServiceSequelizeMySQL',
       useFactory: (
         defaultRepository: ContactRepository,
         findAllContactsUseCase: FindAllContactsUseCase,
