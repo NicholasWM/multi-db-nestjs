@@ -1,6 +1,13 @@
 import { Module } from '@nestjs/common';
 import { FindAllContactsUseCase } from './@core/application/FindAllContacts.useCase';
-import { ContactRepository } from './@core/domain/repository/contact.repository';
+import {
+  ContactRepository,
+  ContactRepositoryMongoose,
+  ContactRepositorySequelize_DB_2,
+  ContactRepositorySequelize_DEFAULT,
+  ContactRepositoryTypeORM_DB_2,
+  ContactRepositoryTypeORM_DEFAULT,
+} from './@core/domain/repository/contact.repository';
 import { DatabaseModule } from '@/database/database.module';
 import { ContactsService } from './contacts.service';
 import { createDynamicContactsController } from './contacts.controller';
@@ -15,43 +22,133 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
       tag: 'Contacts In Memory',
       basePath: 'contacts/in-memory',
       // entityName: '',
-      providerName: ContactsService,
+      providerName: 'ContactsServiceInMemory',
     }),
     createDynamicContactsController({
       tag: 'Contacts TypeORM MySQL',
       basePath: 'contacts/typeorm/mysql',
       // entityName: '',
-      providerName: ContactsService,
+      providerName: 'ContactsServiceTypeOrmDefault',
     }),
     createDynamicContactsController({
       tag: 'Contacts TypeORM PG',
       basePath: 'contacts/typeorm/pg',
       // entityName: '',
-      providerName: ContactsService,
+      providerName: 'ContactsServiceTypeOrmDB_2',
     }),
     createDynamicContactsController({
       tag: 'Contacts Sequelize MySQL',
       basePath: 'contacts/sequelize/mysql',
       // entityName: '',
-      providerName: ContactsService,
+      providerName: 'ContactsServiceSequelizeDefault',
     }),
     createDynamicContactsController({
       tag: 'Contacts Sequelize PG',
       basePath: 'contacts/sequelize/pg',
       // entityName: '',
-      providerName: ContactsService,
+      providerName: 'ContactsServiceSequelizeDB_2',
     }),
     createDynamicContactsController({
       tag: 'Contacts Mongoose',
       basePath: 'contacts/mongoose/mongodb',
       // entityName: '',
-      providerName: ContactsService,
+      providerName: 'ContactsServiceMongoose',
     }),
   ],
   providers: [
     ...contactProviders,
     {
-      provide: ContactsService,
+      provide: 'ContactsServiceMongoose',
+      useFactory: (
+        defaultRepository: ContactRepository,
+        findAllContactsUseCase: FindAllContactsUseCase,
+        createContactsUseCase: CreateContactsUseCase,
+      ) => {
+        return new ContactsService(defaultRepository, {
+          findAllUseCase: findAllContactsUseCase,
+          createContactsUseCase: createContactsUseCase,
+        });
+      },
+      inject: [
+        ContactRepositoryMongoose,
+        FindAllContactsUseCase,
+        CreateContactsUseCase,
+      ],
+    },
+    {
+      provide: 'ContactsServiceTypeOrmDB_2',
+      useFactory: (
+        defaultRepository: ContactRepository,
+        findAllContactsUseCase: FindAllContactsUseCase,
+        createContactsUseCase: CreateContactsUseCase,
+      ) => {
+        return new ContactsService(defaultRepository, {
+          findAllUseCase: findAllContactsUseCase,
+          createContactsUseCase: createContactsUseCase,
+        });
+      },
+      inject: [
+        ContactRepositoryTypeORM_DB_2,
+        FindAllContactsUseCase,
+        CreateContactsUseCase,
+      ],
+    },
+    {
+      provide: 'ContactsServiceTypeOrmDefault',
+      useFactory: (
+        defaultRepository: ContactRepository,
+        findAllContactsUseCase: FindAllContactsUseCase,
+        createContactsUseCase: CreateContactsUseCase,
+      ) => {
+        return new ContactsService(defaultRepository, {
+          findAllUseCase: findAllContactsUseCase,
+          createContactsUseCase: createContactsUseCase,
+        });
+      },
+      inject: [
+        ContactRepositoryTypeORM_DEFAULT,
+        FindAllContactsUseCase,
+        CreateContactsUseCase,
+      ],
+    },
+    {
+      provide: 'ContactsServiceSequelizeDefault',
+      useFactory: (
+        defaultRepository: ContactRepository,
+        findAllContactsUseCase: FindAllContactsUseCase,
+        createContactsUseCase: CreateContactsUseCase,
+      ) => {
+        return new ContactsService(defaultRepository, {
+          findAllUseCase: findAllContactsUseCase,
+          createContactsUseCase: createContactsUseCase,
+        });
+      },
+      inject: [
+        ContactRepositorySequelize_DEFAULT,
+        FindAllContactsUseCase,
+        CreateContactsUseCase,
+      ],
+    },
+    {
+      provide: 'ContactsServiceSequelizeDB_2',
+      useFactory: (
+        defaultRepository: ContactRepository,
+        findAllContactsUseCase: FindAllContactsUseCase,
+        createContactsUseCase: CreateContactsUseCase,
+      ) => {
+        return new ContactsService(defaultRepository, {
+          findAllUseCase: findAllContactsUseCase,
+          createContactsUseCase: createContactsUseCase,
+        });
+      },
+      inject: [
+        ContactRepositorySequelize_DB_2,
+        FindAllContactsUseCase,
+        CreateContactsUseCase,
+      ],
+    },
+    {
+      provide: 'ContactsServiceInMemory',
       useFactory: (
         defaultRepository: ContactRepository,
         findAllContactsUseCase: FindAllContactsUseCase,
@@ -76,7 +173,7 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
         );
         return createContactsUseCase;
       },
-      inject: [ContactsInMemoryRepository],
+      inject: [ContactRepositorySequelize_DB_2],
     },
     {
       provide: FindAllContactsUseCase,
@@ -84,7 +181,7 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
         const findAllUseCase = new FindAllContactsUseCase(defaultRepository);
         return findAllUseCase;
       },
-      inject: [ContactsInMemoryRepository],
+      inject: [ContactRepositorySequelize_DB_2],
     },
   ],
 })
