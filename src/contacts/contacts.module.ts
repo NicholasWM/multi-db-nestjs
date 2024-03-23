@@ -6,7 +6,7 @@ import {
   ContactRepositorySequelize_DB_2,
   ContactRepositorySequelize_DEFAULT,
   ContactRepositoryTypeORM_DB_2,
-  ContactRepositoryTypeORM_DEFAULT,
+  ContactRepositoryTypeORM_MySQL,
 } from './@core/domain/repository/contact.repository';
 import { DatabaseModule } from '@/database/database.module';
 import { ContactsService } from './contacts.service';
@@ -106,7 +106,7 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
         });
       },
       inject: [
-        ContactRepositoryTypeORM_DEFAULT,
+        ContactRepositoryTypeORM_MySQL,
         FindAllContactsUseCase,
         CreateContactsUseCase,
       ],
@@ -165,6 +165,9 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
         CreateContactsUseCase,
       ],
     },
+
+    // Exemplo de como da para injetar use cases
+    // Dentro das services
     {
       provide: CreateContactsUseCase,
       useFactory: (defaultRepository: any) => {

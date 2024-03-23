@@ -5,7 +5,7 @@ import { FactoryProvider } from '@nestjs/common';
 import { AVAILABLE_DATA_SOURCES } from '@/@common/generics/generic.provider';
 
 import {
-  ContactRepositoryTypeORM_DEFAULT,
+  ContactRepositoryTypeORM_MySQL,
   ContactRepositoryTypeORM_DB_2,
 } from '@/contacts/@core/domain/repository/contact.repository';
 import { ContactsTypeOrmRepositoryImplementation } from '@/contacts/@core/infra/db/typeorm/contact.implementation.repository';
@@ -19,7 +19,7 @@ interface IProvider {
 
 export const typeOrmContactProviders: IProvider = {
   [AVAILABLE_DATA_SOURCES.TYPEORM.DEFAULT]: {
-    provide: ContactRepositoryTypeORM_DEFAULT,
+    provide: ContactRepositoryTypeORM_MySQL,
     useFactory: (connectionSource: DataSource) => {
       const repo = connectionSource.getRepository(ContactModel);
       return new ContactsTypeOrmRepositoryImplementation(repo);
