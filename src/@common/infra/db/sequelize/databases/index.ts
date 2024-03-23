@@ -50,7 +50,7 @@ export const sequelizeDatabaseProviders = [
       const dataSource = connectionSourcePg;
       return dataSource.sync();
     },
-    // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.DB_2],
+    // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES],
   },
 
 ];

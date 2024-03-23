@@ -14,7 +14,7 @@ import { ContactModel } from '@/contacts/@core/infra/db/typeorm/contact.model';
 
 interface IProvider {
   [AVAILABLE_DATA_SOURCES.TYPEORM.MY_SQL]: FactoryProvider<any>;
-  [AVAILABLE_DATA_SOURCES.TYPEORM.DB_2]: FactoryProvider<any>;
+  [AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES]: FactoryProvider<any>;
 }
 
 export const typeOrmContactProviders: IProvider = {
@@ -26,12 +26,12 @@ export const typeOrmContactProviders: IProvider = {
     },
     inject: [AVAILABLE_DATA_SOURCES.TYPEORM.MY_SQL],
   },
-  [AVAILABLE_DATA_SOURCES.TYPEORM.DB_2]: {
+  [AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES]: {
     provide: ContactRepositoryTypeORM_DB_2,
     useFactory: (connectionSource: DataSource) => {
       const repo = connectionSource.getRepository(ContactModel);
       return new ContactsTypeOrmRepositoryImplementation(repo);
     },
-    inject: [AVAILABLE_DATA_SOURCES.TYPEORM.DB_2],
+    inject: [AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES],
   },
 };

@@ -21,7 +21,7 @@ export const connectionSource = new DataSource({
 });
 
 export const connectionSourcePg = new DataSource({
-  name: AVAILABLE_DATA_SOURCES.TYPEORM.DB_2,
+  name: AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES,
   type: 'postgres',
   host: 'localhost',
   port: 8803,

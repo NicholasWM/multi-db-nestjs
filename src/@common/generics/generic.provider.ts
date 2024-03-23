@@ -31,7 +31,7 @@ export interface IAvailableDataSources {
   };
   TYPEORM: {
     MY_SQL: 'TYPEORM_DB_1';
-    DB_2: 'TYPEORM_DB_2';
+    POSTGRES: 'TYPEORM_DB_2';
   };
   MONGOOSE: {
     DEFAULT: 'MON_DB_1';
@@ -45,8 +45,8 @@ export const AVAILABLE_DATA_SOURCES: IAvailableDataSources = {
     DB_2: 'SEQ_DB_2',
   },
   TYPEORM: {
-    DEFAULT: 'TYPEORM_DB_1',
-    DB_2: 'TYPEORM_DB_2',
+    MY_SQL: 'TYPEORM_DB_1',
+    POSTGRES: 'TYPEORM_DB_2',
   },
   MONGOOSE: {
     DEFAULT: 'MON_DB_1',

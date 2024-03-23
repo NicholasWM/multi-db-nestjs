@@ -13,11 +13,11 @@ export const typeOrmDatabaseProviders = [
     // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.MY_SQL],
   },
   {
-    provide: AVAILABLE_DATA_SOURCES.TYPEORM.DB_2,
+    provide: AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES,
     useFactory: async () => {
       const dataSource = connectionSourcePg;
       return dataSource.initialize();
     },
-    // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.DB_2],
+    // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES],
   },
 ];
