@@ -19,7 +19,7 @@ export abstract class ContactRepositorySequelize_DB_2 extends ContactGenericRepo
 
 export abstract class ContactRepositoryTypeORM extends ContactGenericRepository {}
 export abstract class ContactRepositoryTypeORM_MySQL extends ContactGenericRepository {}
-export abstract class ContactRepositoryTypeORM_DB_2 extends ContactGenericRepository {}
+export abstract class ContactRepositoryTypeORM_POSTGRES extends ContactGenericRepository {}
 
 export abstract class ContactRepositoryMongoose extends ContactGenericRepository {}
 export abstract class ContactRepositoryInMemory extends ContactGenericRepository {}

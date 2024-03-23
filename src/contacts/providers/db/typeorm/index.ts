@@ -6,7 +6,7 @@ import { AVAILABLE_DATA_SOURCES } from '@/@common/generics/generic.provider';
 
 import {
   ContactRepositoryTypeORM_MySQL,
-  ContactRepositoryTypeORM_DB_2,
+  ContactRepositoryTypeORM_POSTGRES,
 } from '@/contacts/@core/domain/repository/contact.repository';
 import { ContactsTypeOrmRepositoryImplementation } from '@/contacts/@core/infra/db/typeorm/contact.implementation.repository';
 
@@ -27,7 +27,7 @@ export const typeOrmContactProviders: IProvider = {
     inject: [AVAILABLE_DATA_SOURCES.TYPEORM.MY_SQL],
   },
   [AVAILABLE_DATA_SOURCES.TYPEORM.POSTGRES]: {
-    provide: ContactRepositoryTypeORM_DB_2,
+    provide: ContactRepositoryTypeORM_POSTGRES,
     useFactory: (connectionSource: DataSource) => {
       const repo = connectionSource.getRepository(ContactModel);
       return new ContactsTypeOrmRepositoryImplementation(repo);

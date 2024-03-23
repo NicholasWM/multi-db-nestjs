@@ -5,7 +5,7 @@ import {
   ContactRepositoryMongoose,
   ContactRepositorySequelize_DB_2,
   ContactRepositorySequelize_DEFAULT,
-  ContactRepositoryTypeORM_DB_2,
+  ContactRepositoryTypeORM_POSTGRES,
   ContactRepositoryTypeORM_MySQL,
 } from './@core/domain/repository/contact.repository';
 import { DatabaseModule } from '@/database/database.module';
@@ -88,7 +88,7 @@ import { ContactsInMemoryRepository } from './@core/infra/db/in-memory/contacts.
         });
       },
       inject: [
-        ContactRepositoryTypeORM_DB_2,
+        ContactRepositoryTypeORM_POSTGRES,
         FindAllContactsUseCase,
         CreateContactsUseCase,
       ],

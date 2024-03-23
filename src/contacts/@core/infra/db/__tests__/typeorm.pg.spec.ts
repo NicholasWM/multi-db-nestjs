@@ -4,7 +4,7 @@ import { CreateContactsUseCase } from '../../../application/CreateContact.useCas
 import { FindAllContactsUseCase } from '../../../application/FindAllContacts.useCase';
 import {
   ContactRepository,
-  ContactRepositoryTypeORM_DB_2,
+  ContactRepositoryTypeORM_POSTGRES,
 } from '../../../domain/repository/contact.repository';
 import { ContactsController } from '../../../../contacts.controller';
 import { Contact } from '../../../domain/entity';
@@ -33,7 +33,7 @@ describe('ContactsController TypeORM Postgrees', () => {
           });
         },
         inject: [
-          ContactRepositoryTypeORM_DB_2,
+          ContactRepositoryTypeORM_POSTGRES,
           FindAllContactsUseCase,
           CreateContactsUseCase,
         ],
