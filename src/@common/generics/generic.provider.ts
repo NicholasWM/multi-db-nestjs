@@ -27,7 +27,7 @@ export interface IAvailableDataSources {
   IN_MEMORY: any;
   SEQUELIZE: {
     MY_SQL: 'SEQ_MY_SQL';
-    DB_2: 'SEQ_POSTGRES';
+    POSTGRES: 'SEQ_POSTGRES';
   };
   TYPEORM: {
     MY_SQL: 'TYPEORM_MY_SQL';
@@ -42,7 +42,7 @@ export const AVAILABLE_DATA_SOURCES: IAvailableDataSources = {
   IN_MEMORY: {},
   SEQUELIZE: {
     MY_SQL: 'SEQ_MY_SQL',
-    DB_2: 'SEQ_POSTGRES',
+    POSTGRES: 'SEQ_POSTGRES',
   },
   TYPEORM: {
     MY_SQL: 'TYPEORM_MY_SQL',

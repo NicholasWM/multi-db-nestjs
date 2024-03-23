@@ -11,7 +11,7 @@ import { buildInjectorByORM, repositoryBuilderByORM } from '@/database/helpers';
 
 interface IProvider {
   [AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL]?: FactoryProvider<any>;
-  [AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2]?: FactoryProvider<any>;
+  [AVAILABLE_DATA_SOURCES.SEQUELIZE.POSTGRES]?: FactoryProvider<any>;
 }
 
 export const sequelizeContactProviders: IProvider = {
@@ -26,7 +26,7 @@ export const sequelizeContactProviders: IProvider = {
       buildInjectorByORM(AVAILABLE_DATA_SOURCES.SEQUELIZE.MY_SQL, 'SEQUELIZE'),
     ],
   },
-  [AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2]: {
+  [AVAILABLE_DATA_SOURCES.SEQUELIZE.POSTGRES]: {
     provide: ContactRepositorySequelize_DB_2,
     useFactory: async (connectionSource: Sequelize) => {
       const ContactsModel = repositoryBuilderByORM(
@@ -36,7 +36,10 @@ export const sequelizeContactProviders: IProvider = {
       return new ContactsSequelizeRepository(ContactsModel);
     },
     inject: [
-      buildInjectorByORM(AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2, 'SEQUELIZE'),
+      buildInjectorByORM(
+        AVAILABLE_DATA_SOURCES.SEQUELIZE.POSTGRES,
+        'SEQUELIZE',
+      ),
     ],
   },
 };

@@ -18,7 +18,7 @@ import { DatabaseStackProviders } from './database.provider';
       models: [ContactModelMySQL],
     }),
     SequelizeModule.forRoot({
-      name: AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2,
+      name: AVAILABLE_DATA_SOURCES.SEQUELIZE.POSTGRES,
       dialect: 'postgres',
       host: 'localhost',
       port: 8803,

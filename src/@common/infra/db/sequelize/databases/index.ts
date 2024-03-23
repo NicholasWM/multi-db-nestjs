@@ -17,7 +17,7 @@ export const connectionSource = new Sequelize({
 });
 
 export const connectionSourcePg = new Sequelize({
-  define: { name: { singular: AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2 } },
+  define: { name: { singular: AVAILABLE_DATA_SOURCES.SEQUELIZE.POSTGRES } },
   dialect: 'postgres',
   host: 'localhost',
   port: 8803,
@@ -26,7 +26,7 @@ export const connectionSourcePg = new Sequelize({
   password: 'study_projects',
   database: 'backoffice_war_sequelize',
   dialectOptions: {
-    application_name: AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2,
+    application_name: AVAILABLE_DATA_SOURCES.SEQUELIZE.POSTGRES,
   },
 });
 
@@ -45,7 +45,7 @@ export const sequelizeDatabaseProviders = [
     // inject: [AVAILABLE_DATA_SOURCES.TYPEORM.MY_SQL],
   },
   {
-    provide: AVAILABLE_DATA_SOURCES.SEQUELIZE.DB_2,
+    provide: AVAILABLE_DATA_SOURCES.SEQUELIZE.POSTGRES,
     useFactory: async () => {
       const dataSource = connectionSourcePg;
       return dataSource.sync();
