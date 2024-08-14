@@ -38,7 +38,6 @@ export class ContactsService {
 
   async createWithService(contact: Contact): Promise<ContactDTO> {
     const newContact = await this._repository.create(contact);
-    console.log(newContact);
     return newContact;
   }
 

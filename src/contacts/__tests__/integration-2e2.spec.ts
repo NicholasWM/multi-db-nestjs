@@ -36,7 +36,6 @@ describe('API Tests by Database', () => {
 
       const response1 = await request(url).get(path);
       expect(response1.status).toEqual(200);
-      console.log(response1.body);
       expect(response1.body.length).toBe(initialLength + 1);
     },
   );
