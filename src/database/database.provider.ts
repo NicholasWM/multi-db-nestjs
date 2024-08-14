@@ -21,6 +21,6 @@ export const databaseProviders: any = {
 export const DatabaseStackProviders = [
   ...databaseProviders[ORM_AVAILABLE_DATA_SOURCES.TYPEORM],
   ...databaseProviders[ORM_AVAILABLE_DATA_SOURCES.MONGOOSE],
-  // ...databaseProviders[ORM_AVAILABLE_DATA_SOURCES.SEQUELIZE],
+  ...databaseProviders[ORM_AVAILABLE_DATA_SOURCES.SEQUELIZE],
   ...databaseProviders[ORM_AVAILABLE_DATA_SOURCES.IN_MEMORY],
 ];
