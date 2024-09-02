@@ -38,7 +38,7 @@
     "@nestjs/swagger": "^7.4.0",
     "@nestjs/typeorm": "^10.0.2",
     "mariadb": "^3.3.1",
-    "mongoose": "^8.5.2",
+    "mongoose": "^8.6.0",
     "mysql2": "^3.11.0",
     "pg": "^8.12.0",
     "pg-hstore": "^2.3.4",
